@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net5.0-windows</TargetFramework>
+        <UseWPF>true</UseWPF>
+        <ApplicationIcon>app_icon.ico</ApplicationIcon>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <None Remove="Resources\Copper_coin.png" />
+      <Resource Include="Resources\Copper_coin.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Resources\Gold_coin.png" />
+      <Resource Include="Resources\Gold_coin.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Resources\Silver_coin.png" />
+      <Resource Include="Resources\Silver_coin.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Resource>
+    </ItemGroup>
+
+</Project>
