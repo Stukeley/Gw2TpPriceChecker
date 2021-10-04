@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Gw2TpPriceChecker"
-        mc:Ignorable="d"
+        mc:Ignorable="d" ResizeMode="CanMinimize"
         Title="GW2 - Check Item's TP Prices" Height="250" Width="400">
     <Grid>
 		<Grid.RowDefinitions>
@@ -21,25 +21,29 @@
 
 		<StackPanel Grid.Row="0" Grid.Column="0">
 			<TextBlock Text="Item ID" HorizontalAlignment="Center" Margin="0,20,0,0"/>
-			<TextBox x:Name="ItemIdBox" HorizontalAlignment="Center" Margin="10" Width="100"/>
+			<TextBox x:Name="ItemIdBox" HorizontalAlignment="Center" Margin="10" Width="100" ToolTip="Enter Item ID (can be found on the Wiki)" FontSize="14"/>
 		</StackPanel>
 
 		<StackPanel Grid.Row="0" Grid.Column="1">
 			<TextBlock Text="Item Name" HorizontalAlignment="Center" Margin="0,20,0,0"/>
-			<TextBox x:Name="ItemNameBox" HorizontalAlignment="Center" Margin="10" Width="100" IsEnabled="False"/>
+			<TextBox x:Name="ItemNameBox" HorizontalAlignment="Center" Margin="10" Width="100" IsEnabled="False" FontSize="14"/>
 		</StackPanel>
 
 		<StackPanel Grid.Row="0" Grid.Column="2">
 			<TextBlock Text="Enable price alerts?" HorizontalAlignment="Center" Margin="0,20,0,0"/>
 			
 			<StackPanel Orientation="Horizontal">
-				<ComboBox x:Name="ItemPriceComparisonTypeBox" Margin="5,5,0,5" Height="20" Width="20" SelectedIndex="0">
+				<ComboBox x:Name="ItemPriceComparisonTypeBox" Margin="5,5,0,5" Height="20" Width="20" SelectedIndex="0"
+				          xmlns:sys="clr-namespace:System;assembly=mscorlib" ToolTip="Set comparison type. Alert will be sent if the price on TP is higher than / equal / less than the input amount. Will not send alerts if left empty">
+					<ComboBox.Resources>
+						<sys:Double x:Key="{x:Static SystemParameters.VerticalScrollBarWidthKey}">0</sys:Double>
+					</ComboBox.Resources>
 					<ComboBoxItem Content=" "/>
 					<ComboBoxItem Content=">"/>
 					<ComboBoxItem Content="="/>
 					<ComboBoxItem Content="&lt;"/>
 				</ComboBox>
-				<TextBox x:Name="ItemPriceThresholdBox" Margin="5,10,0,10" Width="90" ToolTip="Enter the amount (in coins)"/>
+				<TextBox x:Name="ItemPriceThresholdBox" Margin="5,10,0,10" Width="90" ToolTip="Enter the amount (in coins)" FontSize="14"/>
 			</StackPanel>
 		</StackPanel>
 

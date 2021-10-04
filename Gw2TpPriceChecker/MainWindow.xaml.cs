@@ -25,6 +25,18 @@ namespace Gw2TpPriceChecker
 		{
 			if (!_timer.IsEnabled)
 			{
+				string itemName;
+
+				try
+				{
+					itemName = await ApiCaller.GetItemNameById(ItemIdBox.Text);
+				}
+				catch (Exception)
+				{
+					MessageBox.Show("Item of the given ID does not exist.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+					return;
+				}
+				
 				StartStopButton.Content = "Stop";
 				
 				// Disable ID and threshold input.
@@ -34,11 +46,10 @@ namespace Gw2TpPriceChecker
 
 				if (!string.IsNullOrWhiteSpace(ItemPriceThresholdBox.Text))
 				{
-					_priceThreshold = int.Parse(ItemPriceThresholdBox.Text);
-					_priceComparisonType = char.Parse(ItemPriceComparisonTypeBox.SelectedValue.ToString());
+					_ = int.TryParse(ItemPriceThresholdBox.Text, out _priceThreshold);
+					_ = char.TryParse(ItemPriceComparisonTypeBox.Text, out _priceComparisonType);
 				}
-
-				string itemName = await ApiCaller.GetItemNameById(ItemIdBox.Text);
+				
 				ItemNameBox.Text = itemName;
 				Timer_Tick(this, EventArgs.Empty);
 				
@@ -62,10 +73,12 @@ namespace Gw2TpPriceChecker
 		
 		private void SetOutAlert()
 		{
+			MessageBox.Show("Price is within threshold!", "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
+			
 			for (int i = 0; i < 3; i++)
 			{
 				SystemSounds.Exclamation.Play();
-				Thread.Sleep(1000);
+				Thread.Sleep(500);
 			}
 		}
 
