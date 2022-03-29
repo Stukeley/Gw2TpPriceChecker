@@ -29,3 +29,9 @@ For now, to use the app you need to provide the item's ID - you can find an item
 Project icon & leading image courtesy of Ilona Iske - https://elonian-gallery.com/
 
 Coin icons (gold, silver, copper) belong to ArenaNet
+
+## TODO [project is back in development]
+- Automatic filling of ID when item name is input
+- item icons displayed on the interface when an item is chosen
+- simplified process of inputting the amount of gold/silver/copper
+- improved alerts
