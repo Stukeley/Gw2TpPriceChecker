@@ -1,13 +1,14 @@
-﻿<Window x:Class="Gw2TpPriceChecker.MainWindow"
+﻿<Window x:Class="Gw2TpPriceChecker.UI.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Gw2TpPriceChecker"
+        xmlns:local="clr-namespace:Gw2TpPriceChecker.UI"
         mc:Ignorable="d" ResizeMode="CanMinimize"
-        Title="GW2 - Check Item's TP Prices" Height="250" Width="400">
+        Title="GW2 - Check Item's TP Prices" Height="320" Width="400">
     <Grid>
 		<Grid.RowDefinitions>
+			<RowDefinition Height="*"/>
 			<RowDefinition Height="*"/>
 			<RowDefinition Height="*"/>
 			<RowDefinition Height="*"/>
@@ -18,18 +19,21 @@
 			<ColumnDefinition Width="*"/>
 			<ColumnDefinition Width="*"/>
 		</Grid.ColumnDefinitions>
+	    
+	    <StackPanel Grid.Row="0" Grid.ColumnSpan="3">
+		    <TextBlock Text="Item Name" HorizontalAlignment="Center" Margin="0,20,0,0"/>
+		    <TextBox x:Name="ItemNameBox" HorizontalAlignment="Center" Margin="10" Width="200" FontSize="14" ToolTip="Item name - will be entered automatically if you enter the item ID. You can also enter it manually (should work with lower case letters and no special characters)"
+		             LostFocus="ItemNameBox_OnLostFocus"/>
+	    </StackPanel>
 
-		<StackPanel Grid.Row="0" Grid.Column="0">
+		<StackPanel Grid.Row="1" Grid.Column="0">
 			<TextBlock Text="Item ID" HorizontalAlignment="Center" Margin="0,20,0,0"/>
-			<TextBox x:Name="ItemIdBox" HorizontalAlignment="Center" Margin="10" Width="100" ToolTip="Enter Item ID (can be found on the Wiki)" FontSize="14"/>
+			<TextBox x:Name="ItemIdBox" HorizontalAlignment="Center" Margin="10" Width="100" ToolTip="Item ID - will be entered automatically if you enter the item name. If ID is 0, then item was not found or its name was wrong." FontSize="14" LostFocus="ItemIdBox_OnLostFocus"/>
 		</StackPanel>
+	    
+	    <StackPanel x:Name="ItemIconPanel" Grid.Row="1" Grid.Column="1" Margin="10,0,10,0"/>
 
-		<StackPanel Grid.Row="0" Grid.Column="1">
-			<TextBlock Text="Item Name" HorizontalAlignment="Center" Margin="0,20,0,0"/>
-			<TextBox x:Name="ItemNameBox" HorizontalAlignment="Center" Margin="10" Width="100" IsEnabled="False" FontSize="14"/>
-		</StackPanel>
-
-		<StackPanel Grid.Row="0" Grid.Column="2">
+	    <StackPanel Grid.Row="1" Grid.Column="2">
 			<TextBlock Text="Enable price alerts?" HorizontalAlignment="Center" Margin="0,20,0,0"/>
 			
 			<StackPanel Orientation="Horizontal">
@@ -43,16 +47,22 @@
 					<ComboBoxItem Content="="/>
 					<ComboBoxItem Content="&lt;"/>
 				</ComboBox>
-				<TextBox x:Name="ItemPriceThresholdBox" Margin="5,10,0,10" Width="90" ToolTip="Enter the amount (in coins)" FontSize="14"/>
+				<TextBox x:Name="ItemPriceThresholdBox" Margin="5,10,0,10" Width="90" ToolTip="The amount of coins (copper) for alerts. Click the box to set the value." FontSize="14" GotFocus="ItemPriceThresholdBox_OnGotFocus"/>
 			</StackPanel>
 		</StackPanel>
 
-		<Button x:Name="StartStopButton" Grid.Row="1" Grid.Column="1" Width="80" Height="30" Content="Start" FontWeight="DemiBold" Click="StartStopButton_Click"/>
+		<Button x:Name="StartStopButton" Grid.Row="2" Grid.Column="1" Width="80" Height="30" Content="Start" FontWeight="DemiBold" Click="StartStopButton_Click"/>
+		
+		<StackPanel Grid.Row="2" Grid.Column="0">
+			<TextBlock Text="Interval" HorizontalAlignment="Center" Margin="0,10,0,0"/>
+			<TextBox x:Name="IntervalBox" HorizontalAlignment="Center" Margin="10" Width="100" FontSize="14" Text="30" ToolTip="How often the app should check prices - valid values are between 30 and 300 (in seconds)"
+			         LostFocus="IntervalBox_OnLostFocus"/>
+		</StackPanel>
 
-		<TextBlock x:Name="LastCheckedBlock" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12" TextWrapping="Wrap" Text="Last checked:"/>
+		<TextBlock x:Name="LastCheckedBlock" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12" TextWrapping="Wrap" Text="Last checked:"/>
 
-		<TextBlock x:Name="BuyPricesBlock" Grid.Row="2" Grid.ColumnSpan="2" Text="TP Buy Price" HorizontalAlignment="Center" Visibility="Hidden"/>
-		<StackPanel x:Name="BuyPricesPanel" Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" Visibility="Hidden">
+		<TextBlock x:Name="BuyPricesBlock" Grid.Row="3" Grid.ColumnSpan="2" Text="TP Buy Price" HorizontalAlignment="Center" Visibility="Hidden"/>
+		<StackPanel x:Name="BuyPricesPanel" Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" Visibility="Hidden">
 			<Image Source="/Resources/Gold_coin.png" Width="10" Height="10" Margin="10,5,0,5"/>
 			<TextBlock x:Name="BuyPriceGold" Text="0" VerticalAlignment="Center" Margin="2,5,0,5"/>
 
@@ -63,12 +73,12 @@
 			<TextBlock x:Name="BuyPriceCopper" Text="0" VerticalAlignment="Center" Margin="2,5,10,5"/>
 		</StackPanel>
 
-		<StackPanel Grid.Row="2" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Center">
+		<StackPanel Grid.Row="3" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Center">
 			<Separator x:Name="SellAndBuyPricesSeparator" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Visibility="Hidden"/>
 		</StackPanel>
 
-		<TextBlock x:Name="SellPricesBlock" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Text="TP Sell Price" HorizontalAlignment="Center" Visibility="Hidden"/>
-		<StackPanel x:Name="SellPricesPanel" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" Visibility="Hidden">
+		<TextBlock x:Name="SellPricesBlock" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Text="TP Sell Price" HorizontalAlignment="Center" Visibility="Hidden"/>
+		<StackPanel x:Name="SellPricesPanel" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" Visibility="Hidden">
 			<Image Source="/Resources/Gold_coin.png" Width="10" Height="10" Margin="10,5,0,5"/>
 			<TextBlock x:Name="SellPriceGold" Text="0" VerticalAlignment="Center" Margin="2,5,0,5"/>
 

@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gw2TpPriceChecker", "Gw2TpPriceChecker\Gw2TpPriceChecker.csproj", "{68CC498B-DF2D-4132-8B13-A85201E13989}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gw2TpPriceChecker.UI", "Gw2TpPriceChecker.UI\Gw2TpPriceChecker.UI.csproj", "{68CC498B-DF2D-4132-8B13-A85201E13989}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gw2TpPriceChekcer.Code", "Gw2TpPriceChekcer.Code\Gw2TpPriceChekcer.Code.csproj", "{CB3CE88F-7C46-4B6D-AC5F-92EBEBCE0AB1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,5 +14,9 @@ Global
 		{68CC498B-DF2D-4132-8B13-A85201E13989}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68CC498B-DF2D-4132-8B13-A85201E13989}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68CC498B-DF2D-4132-8B13-A85201E13989}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB3CE88F-7C46-4B6D-AC5F-92EBEBCE0AB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB3CE88F-7C46-4B6D-AC5F-92EBEBCE0AB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB3CE88F-7C46-4B6D-AC5F-92EBEBCE0AB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB3CE88F-7C46-4B6D-AC5F-92EBEBCE0AB1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

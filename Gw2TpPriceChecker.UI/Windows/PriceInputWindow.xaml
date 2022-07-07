@@ -1,0 +1,21 @@
+<Window x:Class="Gw2TpPriceChecker.UI.Windows.PriceInputWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:Gw2TpPriceChecker.UI.Windows"
+        mc:Ignorable="d"
+        Title="PriceInputWindow" Height="240" Width="200" Closing="PriceInputWindow_OnClosing">
+	<Grid>
+		<StackPanel Orientation="Vertical" HorizontalAlignment="Center" Visibility="Visible" Margin="20">
+			<Image Source="/Resources/Gold_coin.png" Width="10" Height="10" Margin="5,5,0,5"/>
+			<TextBox x:Name="GoldPriceBox" Text="" VerticalAlignment="Center" Margin="2,0,0,10" Width="40"/>
+
+			<Image Source="/Resources/Silver_coin.png" Width="10" Height="10" Margin="5,5,0,5"/>
+			<TextBox x:Name="SilverPriceBox" Text="" VerticalAlignment="Center" Margin="2,0,0,10" Width="40"/>
+
+			<Image Source="/Resources/Copper_coin.png" Width="10" Height="10" Margin="5,5,0,5"/>
+			<TextBox x:Name="CopperPriceBox" Text="" VerticalAlignment="Center" Margin="2,0, 0,5" Width="40"/>
+		</StackPanel>
+	</Grid>
+</Window>

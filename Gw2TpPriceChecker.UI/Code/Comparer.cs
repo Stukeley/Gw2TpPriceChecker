@@ -1,4 +1,4 @@
-﻿namespace Gw2TpPriceChecker.Code
+﻿namespace Gw2TpPriceChecker.UI.Code
 {
 	public static class Comparer
 	{
