@@ -20,20 +20,27 @@ public static class Items
 			return bestMatch;
 		}
 
+		int dimX = itemNames.Select(x => x.NameLowerCase).Max(y => y.Length);
+		int dimY = userInputLowerCase.Length;
+
+		// Pre-allocate the array once, instead of allocating it 20+ thousand times.
+		var d = new int[dimX + 1, dimY + 1];
+
 		// Otherwise, look for the best match (using Levenshtein distance).
 		bestMatch = itemNames
-			.Select(x => new { Name = x.Name, Distance = ComputeLevenshteinDistance(x.NameLowerCase, userInputLowerCase) })
+			.Select(x => new { Name = x.Name, Distance = ComputeLevenshteinDistance(x.NameLowerCase, userInputLowerCase, d) })
 			.OrderBy(x => x.Distance).FirstOrDefault()
 			?.Name;
 
 		return bestMatch;
 	}
 
-	private static int ComputeLevenshteinDistance(string s, string t)
+	private static int ComputeLevenshteinDistance(string s, string t, int[,] d)
 	{
 		int n = s.Length;
 		int m = t.Length;
-		int[,] d = new int[n + 1, m + 1];
+		
+		Array.Clear(d, 0, d.Length);
 
 		// Step 1
 		if (n == 0)

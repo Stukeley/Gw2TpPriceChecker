@@ -37,8 +37,10 @@ namespace Gw2TpPriceChecker.UI
 		{
 			if (_timer is null)
 			{
-				_timer = new DispatcherTimer();
-				_timer.Interval = TimeSpan.FromSeconds(_intervalInSeconds);
+				_timer = new DispatcherTimer
+				{
+					Interval = TimeSpan.FromSeconds(_intervalInSeconds)
+				};
 				_timer.Tick += Timer_Tick;
 			}
 

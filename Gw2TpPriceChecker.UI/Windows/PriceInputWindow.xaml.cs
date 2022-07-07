@@ -3,7 +3,6 @@ using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
 using Gw2TpPriceChecker.Code.Converters;
-using Gw2TpPriceChecker.UI.Code;
 
 namespace Gw2TpPriceChecker.UI.Windows
 {
