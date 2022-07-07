@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Gw2TpPriceChecker.UI"
         mc:Ignorable="d" ResizeMode="CanMinimize"
-        Title="GW2 - Check Item's TP Prices" Height="320" Width="400">
+        Title="GW2 - Check Item's TP Prices" Height="320" Width="400" WindowStartupLocation="CenterScreen">
     <Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="*"/>

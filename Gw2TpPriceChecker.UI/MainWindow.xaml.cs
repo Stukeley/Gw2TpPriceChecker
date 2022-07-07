@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using System.Media;
 using System.Threading;
@@ -109,14 +110,11 @@ namespace Gw2TpPriceChecker.UI
 		
 		private void SetOutAlert()
 		{
-			for (int i = 0; i < 3; i++)
-			{
-				SystemSounds.Exclamation.Play();
-				Thread.Sleep(50);
-			}
-			
-			Thread.Sleep(300);
-			MessageBox.Show("Price is within threshold!", "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
+			var soundPlayer = new SoundPlayer(Path.Combine(Directory.GetCurrentDirectory(), "Resources", "Notification.wav"));
+			soundPlayer.Play();
+
+			Thread.Sleep(50);
+			MessageBox.Show("Price is within threshold!", "Alert", MessageBoxButton.OK, MessageBoxImage.None);
 		}
 
 		private void UpdatePriceUI(ItemPrice currentItemPrice)
