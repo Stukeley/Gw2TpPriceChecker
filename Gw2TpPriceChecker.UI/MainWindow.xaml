@@ -55,7 +55,7 @@
 		
 		<StackPanel Grid.Row="2" Grid.Column="0">
 			<TextBlock Text="Interval" HorizontalAlignment="Center" Margin="0,10,0,0"/>
-			<TextBox x:Name="IntervalBox" HorizontalAlignment="Center" Margin="10" Width="100" FontSize="14" Text="30" ToolTip="How often the app should check prices - valid values are between 30 and 300 (in seconds)"
+			<TextBox x:Name="IntervalBox" HorizontalAlignment="Center" Margin="10" Width="100" FontSize="14" Text="60" ToolTip="How often the app should check prices - valid values are between 30 and 300 (in seconds)"
 			         LostFocus="IntervalBox_OnLostFocus"/>
 		</StackPanel>
 

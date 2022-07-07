@@ -22,7 +22,7 @@ namespace Gw2TpPriceChecker.UI
 		private DispatcherTimer _timer;
 		private int _priceThreshold;
 		private char _priceComparisonType;
-		private int _intervalInSeconds = 30;
+		private int _intervalInSeconds = 60;
 
 		public MainWindow()
 		{
