@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Media;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Threading;
@@ -20,7 +21,7 @@ namespace Gw2TpPriceChecker.UI
 		private DispatcherTimer _timer;
 		private int _priceThreshold;
 		private char _priceComparisonType;
-		private int _intervalInSeconds;
+		private int _intervalInSeconds = 30;
 
 		public MainWindow()
 		{
@@ -108,13 +109,14 @@ namespace Gw2TpPriceChecker.UI
 		
 		private void SetOutAlert()
 		{
-			MessageBox.Show("Price is within threshold!", "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
-			
 			for (int i = 0; i < 3; i++)
 			{
 				SystemSounds.Exclamation.Play();
-				Thread.Sleep(100);
+				Thread.Sleep(50);
 			}
+			
+			Thread.Sleep(300);
+			MessageBox.Show("Price is within threshold!", "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
 		}
 
 		private void UpdatePriceUI(ItemPrice currentItemPrice)
@@ -163,17 +165,21 @@ namespace Gw2TpPriceChecker.UI
 			}
 		}
 
-		private void ItemNameBox_OnLostFocus(object sender, RoutedEventArgs e)
+		private async void ItemNameBox_OnLostFocus(object sender, RoutedEventArgs e)
 		{
 			var itemName = ItemNameBox.Text.ToLower();
-			var itemId = Items.ItemNames.FirstOrDefault(x=>x.Value == itemName).Key;
+
+			var correctItemName = Items.FindNameByUserInput(itemName);
+			
+			var itemId = Items.ItemNames.FirstOrDefault(x=>x.Value == correctItemName).Key;
 
 			ItemIdBox.Text = itemId.ToString();
+			ItemNameBox.Text = correctItemName;
 
-			UpdateItemIcon();
+			await UpdateItemIcon();
 		}
 
-		private void ItemIdBox_OnLostFocus(object sender, RoutedEventArgs e)
+		private async void ItemIdBox_OnLostFocus(object sender, RoutedEventArgs e)
 		{
 			var itemId = ItemIdBox.Text.Trim();
 
@@ -186,7 +192,7 @@ namespace Gw2TpPriceChecker.UI
 				ItemNameBox.Text = itemName;
 			}
 
-			UpdateItemIcon();
+			await UpdateItemIcon();
 		}
 
 		private void IntervalBox_OnLostFocus(object sender, RoutedEventArgs e)
@@ -198,7 +204,7 @@ namespace Gw2TpPriceChecker.UI
 			IntervalBox.Text = _intervalInSeconds.ToString();
 		}
 
-		private async void UpdateItemIcon()
+		private async Task UpdateItemIcon()
 		{
 			var itemIconBytes = await ApiCaller.GetItemIconById(int.Parse(ItemIdBox.Text));
 

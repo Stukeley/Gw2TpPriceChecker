@@ -15,7 +15,7 @@ public static class ItemNamesParser
 		itemNamesList.ForEach(x =>
 		{
 			var jsonElementAsList = x.EnumerateArray().ToList();
-			Items.ItemNames.Add(jsonElementAsList[0].GetInt32(), jsonElementAsList[1].GetString().ToLower());
+			Items.ItemNames.Add(jsonElementAsList[0].GetInt32(), jsonElementAsList[1].GetString());
 		});
 	}
 }

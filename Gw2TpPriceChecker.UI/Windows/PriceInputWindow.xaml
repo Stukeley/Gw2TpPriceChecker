@@ -5,7 +5,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:Gw2TpPriceChecker.UI.Windows"
         mc:Ignorable="d"
-        Title="PriceInputWindow" Height="240" Width="200" Closing="PriceInputWindow_OnClosing">
+        Title="Price Threshold" Height="240" Width="200" Closing="PriceInputWindow_OnClosing" WindowStyle="SingleBorderWindow" ResizeMode="NoResize" PreviewKeyDown="PriceInputWindow_OnPreviewKeyDown">
 	<Grid>
 		<StackPanel Orientation="Vertical" HorizontalAlignment="Center" Visibility="Visible" Margin="20">
 			<Image Source="/Resources/Gold_coin.png" Width="10" Height="10" Margin="5,5,0,5"/>

@@ -22,7 +22,7 @@
 	    
 	    <StackPanel Grid.Row="0" Grid.ColumnSpan="3">
 		    <TextBlock Text="Item Name" HorizontalAlignment="Center" Margin="0,20,0,0"/>
-		    <TextBox x:Name="ItemNameBox" HorizontalAlignment="Center" Margin="10" Width="200" FontSize="14" ToolTip="Item name - will be entered automatically if you enter the item ID. You can also enter it manually (should work with lower case letters and no special characters)"
+		    <TextBox x:Name="ItemNameBox" HorizontalAlignment="Center" Margin="10" Width="200" FontSize="14" ToolTip="Item name - will be entered automatically if you enter the item ID. You can also enter it manually - should be enough to enter part of the name, lowercase, without symbols, etc."
 		             LostFocus="ItemNameBox_OnLostFocus"/>
 	    </StackPanel>
 

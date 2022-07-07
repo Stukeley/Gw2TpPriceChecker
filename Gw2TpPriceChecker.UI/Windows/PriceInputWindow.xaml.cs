@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel;
 using System.Windows;
+using System.Windows.Input;
 using Gw2TpPriceChecker.Code.Converters;
 using Gw2TpPriceChecker.UI.Code;
 
@@ -28,6 +29,14 @@ namespace Gw2TpPriceChecker.UI.Windows
 			catch (Exception)
 			{
 				TotalPriceInCopper = 0;
+			}
+		}
+
+		private void PriceInputWindow_OnPreviewKeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.Key == Key.Escape)
+			{
+				this.Close();
 			}
 		}
 	}
