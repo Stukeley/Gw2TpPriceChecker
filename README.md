@@ -21,12 +21,20 @@ Either way, the other value will be filled in automatically.
 
 2. Select comparison type - a value from the drop-down list:
 - empty (default value) - you will receive no alerts, but the price will still be checked every interval
-- '>' (greater than) - you will receive alerts when the insta-sell price is **above** the specified value
-- '=' (equal) - you will receive alerts when the insta-sell price is **equal** to the specified value
-- '<' (less than) - you will receive alerts when the insta-sell price is **below** the specified value
+- ">B" (buy price greater than) - you will receive alerts when the insta-buy price is **above** the specified value
+- ">S" (sell price greater than) - you will receive alerts when the insta-sell price is **above** the specified value
+- "<B" (buy price less than) - you will receive alerts when the insta-buy price is **below** the specified value
+- "<S" (sell price less than) - you will receive alerts when the insta-sell price is **below** the specified value
+
+Example: let's say we're monitoring Piece of Unidentified Gear (green). We input the value: 2s 32c. The current prices are: Buy Order 2s 36c, Sell order 2s 37c.
+- If we selected Empty, the price will simply be updated every interval.
+- If we selected ">B", we will get alerts when the Highest Buy Order is at 2s 33c or above. (this is already the case in the example, so we will get alerts instantly)
+- If we selected ">S", we will get alerts when the Lowest Sell Order is at 2s 33c or above. (this is already the case in the example, so we will get alerts instantly)
+- If we selected "<B", we will get alerts when the Highest Buy Order is at 2s 31c or below.
+- If we selected "<S", we will get alerts when the Lowest Sell Order is at 2s 31c or below.
 
 <p align="center">
-  <img src="https://i.imgur.com/7jKmPcN.png">
+  <img src="https://i.imgur.com/C05m0Vs.png">
 </p>
 
 3. Input the coin value - when you click (or otherwise select) the box below "Enable price alerts?", a second window will pop up, and you can specify the amount of gold, silver and copper there.
@@ -65,5 +73,5 @@ Project icon & leading image courtesy of Ilona Iske - https://elonian-gallery.co
 
 Coin icons (gold, silver, copper) as well as other item icons belong to ArenaNet: https://www.guildwars2.com/.
 
-## Bonus idea
-Let the user choose whether we're looking for sell price changes, or for buy price changes.
+## Feature Requests
+Have an idea you would like to see in the app? Feel free to contact me, make an Issue on GitHub, or let me know otherwise.
