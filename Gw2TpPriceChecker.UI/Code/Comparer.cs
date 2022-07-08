@@ -2,16 +2,26 @@
 {
 	public static class Comparer
 	{
-		public static bool Compare(int actualValue, int setValue, char comparisonType)
+		public static bool Compare(int buyValue, int sellValue, int checkedValue, string comparisonType)
 		{
+			if (string.IsNullOrWhiteSpace(comparisonType))
+			{
+				return false;
+			}
+			
 			switch (comparisonType)
 			{
-				case '=':
-					return actualValue == setValue;
-				case '>':
-					return actualValue > setValue;
-				case '<':
-					return actualValue < setValue;
+				case ">B":
+					return buyValue > checkedValue;
+				
+				case ">S":
+					return sellValue > checkedValue;
+				
+				case "<B":
+					return buyValue < checkedValue;
+				
+				case "<S":
+					return sellValue < checkedValue;
 			}
 
 			return false;

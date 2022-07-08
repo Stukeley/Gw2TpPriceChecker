@@ -21,7 +21,7 @@ namespace Gw2TpPriceChecker.UI
 	{
 		private DispatcherTimer _timer;
 		private int _priceThreshold;
-		private char _priceComparisonType;
+		private string _priceComparisonType;
 		private int _intervalInSeconds = 60;
 
 		public MainWindow()
@@ -77,7 +77,7 @@ namespace Gw2TpPriceChecker.UI
 				if (!string.IsNullOrWhiteSpace(ItemPriceThresholdBox.Text))
 				{
 					_ = int.TryParse(ItemPriceThresholdBox.Text, out _priceThreshold);
-					_ = char.TryParse(ItemPriceComparisonTypeBox.Text, out _priceComparisonType);
+					_priceComparisonType = ItemPriceComparisonTypeBox.Text;
 				}
 				
 				ItemNameBox.Text = itemName;
@@ -100,7 +100,7 @@ namespace Gw2TpPriceChecker.UI
 				ItemPriceComparisonTypeBox.IsEnabled = true;
 				
 				_priceThreshold = 0;
-				_priceComparisonType = ' ';
+				_priceComparisonType = " ";
 				
 				_timer.Stop();
 				_timer = null;
@@ -149,10 +149,10 @@ namespace Gw2TpPriceChecker.UI
 				
 				UpdatePriceUI(currentItemPrice);
 
-				bool isThresholdEnabled = _priceComparisonType != ' ' && _priceThreshold != 0;
+				bool isThresholdEnabled = _priceComparisonType != " " && _priceThreshold != 0;
 
 				// Compare price and set out an alert if the result is true. (only if comparison type is set)
-				if (isThresholdEnabled && Comparer.Compare(currentItemPrice.buys.unit_price, _priceThreshold, _priceComparisonType))
+				if (isThresholdEnabled && Comparer.Compare(currentItemPrice.buys.unit_price, currentItemPrice.sells.unit_price, _priceThreshold, _priceComparisonType))
 				{
 					SetOutAlert();
 				}

@@ -37,17 +37,18 @@
 			<TextBlock Text="Enable price alerts?" HorizontalAlignment="Center" Margin="0,20,0,0"/>
 			
 			<StackPanel Orientation="Horizontal">
-				<ComboBox x:Name="ItemPriceComparisonTypeBox" Margin="5,5,0,5" Height="20" Width="20" SelectedIndex="0"
+				<ComboBox x:Name="ItemPriceComparisonTypeBox" Margin="5,5,0,5" Height="20" Width="30" SelectedIndex="0"
 				          xmlns:sys="clr-namespace:System;assembly=mscorlib" ToolTip="Set comparison type. Alert will be sent if the price on TP is higher than / equal / less than the input amount. Will not send alerts if left empty">
 					<ComboBox.Resources>
 						<sys:Double x:Key="{x:Static SystemParameters.VerticalScrollBarWidthKey}">0</sys:Double>
 					</ComboBox.Resources>
 					<ComboBoxItem Content=" "/>
-					<ComboBoxItem Content=">"/>
-					<ComboBoxItem Content="="/>
-					<ComboBoxItem Content="&lt;"/>
+					<ComboBoxItem Content=">B"/>
+					<ComboBoxItem Content=">S"/>
+					<ComboBoxItem Content="&lt;B"/>
+					<ComboBoxItem Content="&lt;S"/>
 				</ComboBox>
-				<TextBox x:Name="ItemPriceThresholdBox" Margin="5,10,0,10" Width="90" ToolTip="The amount of coins (copper) for alerts. Click the box to set the value." FontSize="14" GotFocus="ItemPriceThresholdBox_OnGotFocus"/>
+				<TextBox x:Name="ItemPriceThresholdBox" Margin="5,10,0,10" Width="80" ToolTip="The amount of coins (copper) for alerts. Click the box to set the value." FontSize="14" GotFocus="ItemPriceThresholdBox_OnGotFocus"/>
 			</StackPanel>
 		</StackPanel>
 
